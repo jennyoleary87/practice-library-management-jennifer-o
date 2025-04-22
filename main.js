@@ -28,3 +28,40 @@ type has unique properties and behaviors. For example:
 ○ Test accessing and displaying unique properties of each child class.
 */
 
+class libraryItem {
+    constructor(title, id, isAvailable) {
+        this.title = title;
+        this.id = id;
+        this.isAvailable = isAvailable;
+    }
+    checkOut() {
+
+    }
+    returnItem() {
+
+    }
+}
+
+class book extends libraryItem {
+    constructor() {
+        super();
+        this.author = "Hermione Granger";
+        this.genre = "fantasy";
+    }
+}
+
+class DVD extends libraryItem {
+    constructor() {
+        super();
+        this.director = "Niell Druckmann";
+        this.duration = "2:23";
+    }
+}
+
+class magazine extends libraryItem {
+    constructor() {
+        super();
+        this.issueNumber = 137;
+        this.publisher = "Time";
+    }
+}
