@@ -28,7 +28,7 @@ type has unique properties and behaviors. For example:
 ○ Test accessing and displaying unique properties of each child class.
 */
 
-class libraryItem {
+class LibraryItem {
     constructor(title, id, isAvailable = true) {
         this.title = title;
         this.id = id;
@@ -43,31 +43,51 @@ class libraryItem {
         }
     }
     returnItem() {
-        this.isAvailable = true; // once returned, it is now available
-        console.log(` Thank you for returning ${this.title}. \n${this.title} is now available to be checked out! `);
+        if (!this.isAvailable) {
+            this.isAvailable = true; // once returned, it is now available
+            console.log(` Thank you for returning ${this.title}. \n ${this.title} is now available to be checked out! `);
+        } else {
+            console.log(` ${this.title} is already available. Are you sure you are returning ${this.title}?`);
+        }
     }
 }
 
-class book extends libraryItem {
-    constructor() {
-        super();
-        this.author = "Hermione Granger";
-        this.genre = "fantasy";
+class Book extends LibraryItem {
+    constructor(title, id, author, genre, isAvailable = true) {
+        super(title, id, isAvailable);
+        this.author = author;
+        this.genre = genre;
     }
 }
 
-class DVD extends libraryItem {
-    constructor() {
-        super();
-        this.director = "Niel Druckmann";
-        this.duration = "2:23";
+let harryPotter = new Book("Harry Potter", "Hedwig", "Hermione Granger", "Fantasy");
+
+class DVD extends LibraryItem {
+    constructor(title, id, director, duration, isAvailable = true) {
+        super(title, id, isAvailable);
+        this.director = director;
+        this.duration = duration;
     }
 }
 
-class magazine extends libraryItem {
-    constructor() {
-        super();
-        this.issueNumber = 137;
-        this.publisher = "Time";
+let theLastOfUs = new DVD("The Last Of Us", "Ellie", "Niel Druckmann", "2:23");
+
+class Magazine extends LibraryItem {
+    constructor(title, id, issueNumber, publisher, isAvailable = true) {
+        super(title, id, isAvailable);
+        this.issueNumber = issueNumber;
+        this.publisher = publisher;
     }
 }
+
+let magTime = new Magazine("Time", "Tik Tok", 137, "Fulton Sun");
+
+console.log(harryPotter);
+console.log(theLastOfUs);
+console.log(magTime);
+
+harryPotter.checkOut();
+theLastOfUs.checkOut();
+theLastOfUs.checkOut();
+harryPotter.returnItem();
+magTime.returnItem();
