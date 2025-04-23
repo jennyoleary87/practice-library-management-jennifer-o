@@ -234,31 +234,37 @@ console.log(cokeZero instanceof Juice); // false
 console.log("===== MY WORK =====")
 
 class Milk extends Beverage {
-    constructor(name, ounces, container, source) {
+    constructor(name, ounces, container, source, isNonDairy = false, flavoring = null) {
         super(name, ounces, container);
         this.source = source;
-        this.isNonDairy = false;
-        this.flavoring = [];
+        this.isNonDairy = isNonDairy;
+        this.flavoring = flavoring;
     }
     describe() {
         // console.log(`The ${this.flavoring} ${this.ounces}-oz ${this.container} of ${this.name} is sourced from ${this.source}s.`);
         super.describe();
-        console.log(`It is sourced from ${this.source}s.`);
-        if (this.flavoring != []) {
-            console.log(`It is flavored with ${this.flavoring}`);
+        if (this.isNonDairy) {
+            console.log(`It is sourced from ${this.source}s.`);
+        }
+        if (this.flavoring) {
+            console.log(`It is flavored with ${this.flavoring}.`);
         } else {
             console.log("No extra flavors.");
         };
     }
 }
 
-let chocMilk = new Milk("chocolate milk", 12, "carton", "cow", false, ["chocolate"]);
-let almondMilk = new Milk("almond milk", 32, "jug", "almond", true, []);
+let chocMilk = new Milk("chocolate milk", 12, "carton", "cow", false, "chocolate");
+let almondMilk = new Milk("almond milk", 32, "jug", "almond", true);
+let skimMilk = new Milk("skim milk", 20, "bottle");
 
 console.log(chocMilk);
 console.log(almondMilk);
+console.log(skimMilk);
 
-almondMilk.describe();
+almondMilk.describe(); // have
 almondMilk.recycle();
-almondMilk.describe();
+almondMilk.describe(); // had
+
 chocMilk.describe();
+skimMilk.describe();
