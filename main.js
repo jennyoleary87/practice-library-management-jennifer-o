@@ -29,16 +29,22 @@ type has unique properties and behaviors. For example:
 */
 
 class libraryItem {
-    constructor(title, id, isAvailable) {
+    constructor(title, id, isAvailable = true) {
         this.title = title;
         this.id = id;
         this.isAvailable = isAvailable;
     }
     checkOut() {
-
+        if (this.isAvailable) {
+            this.isAvailable = false; // was true, now its false because it has been checked out
+            console.log(` ${this.title} has now been checked out. `);
+        } else {
+            console.log(` ${this.title} has already been checked out. Please choose another title. `);
+        }
     }
     returnItem() {
-
+        this.isAvailable = true; // once returned, it is now available
+        console.log(` Thank you for returning ${this.title}. \n${this.title} is now available to be checked out! `);
     }
 }
 
@@ -53,7 +59,7 @@ class book extends libraryItem {
 class DVD extends libraryItem {
     constructor() {
         super();
-        this.director = "Niell Druckmann";
+        this.director = "Niel Druckmann";
         this.duration = "2:23";
     }
 }
