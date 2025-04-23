@@ -61,6 +61,7 @@ class Book extends LibraryItem {
 }
 
 let harryPotter = new Book("Harry Potter", "Hedwig", "Hermione Granger", "Fantasy");
+let magicTreeHouse = new Book("The Magic Tree House", "Spin", "Micheal Crighton", "Fiction");
 
 class DVD extends LibraryItem {
     constructor(title, id, director, duration, isAvailable = true) {
@@ -71,6 +72,7 @@ class DVD extends LibraryItem {
 }
 
 let theLastOfUs = new DVD("The Last Of Us", "Ellie", "Niel Druckmann", "2:23");
+let barbiePrincess = new DVD("Barbie Island Princess", "Roe", "Micheal Crighton", "1:39");
 
 class Magazine extends LibraryItem {
     constructor(title, id, issueNumber, publisher, isAvailable = true) {
@@ -80,14 +82,23 @@ class Magazine extends LibraryItem {
     }
 }
 
-let magTime = new Magazine("Time", "Tik Tok", 137, "Fulton Sun");
+let magTime = new Magazine("Time Magazine", "Tik Tok", 137, "Warner Bros");
+let magFultonSun = new Magazine("The Fulton Sun", "Bird", 76, "Emily O\'Leary");
 
 console.log(harryPotter);
 console.log(theLastOfUs);
 console.log(magTime);
+console.log(magicTreeHouse);
+console.log(barbiePrincess);
+console.log(magFultonSun);
 
 harryPotter.checkOut();
 theLastOfUs.checkOut();
 theLastOfUs.checkOut();
 harryPotter.returnItem();
 magTime.returnItem();
+barbiePrincess.returnItem();
+barbiePrincess.checkOut();
+barbiePrincess.returnItem();
+magFultonSun.checkOut();
+magFultonSun.checkOut();
